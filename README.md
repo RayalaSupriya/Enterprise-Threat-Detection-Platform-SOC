@@ -1,53 +1,51 @@
-# Enterprise Threat Detection & Alerting Platform (SOC Project)
+# Enterprise Threat Detection & Alerting Platform
 
-This project simulates a real-world Security Operations Center (SOC) workflow by 
-implementing threat detection, log ingestion, correlation rules, automated alerting, 
-and SIEM dashboards across multiple platforms.
+This project simulates real-world Security Operations Center (SOC) workflows by implementing:
+- Log ingestion and parsing
+- Threat detection and correlation
+- Automated alerting workflows
+- MITRE ATT&CK technique mapping
+- Multi-SIEM detection rules and dashboards
 
----
-
-## 🔥 Key Features
-
-✔ Multi-SIEM compatibility (Splunk, Sentinel, Elastic)  
-✔ Python-based detection engine  
-✔ Brute-force, privilege escalation, lateral movement detection  
-✔ Real Windows + Linux logs for testing  
-✔ MITRE ATT&CK mappings  
-✔ Sigma & YARA rules  
-✔ Slack / Email alerting  
-✔ Diagrams, workflows, and documentation  
+The project is designed to demonstrate hands-on SOC Analyst capabilities across threat detection, investigation, and response workflows.
 
 ---
 
-## 📁 Project Structure
+## 🚀 Tools & Technologies Used
 
-- `/logs` → sample Windows, Linux, firewall logs  
-- `/rules` → Sigma rules, YARA rules, MITRE mapping  
-- `/python-engine` → Detection scripts, parsers, alerting  
-- `/splunk-queries` → SPL correlation rules  
-- `/kql-queries` → Sentinel detection rules  
-- `/elastic-rules` → Elastic / EQL detection rules  
-- `/diagrams` → architecture & workflow diagrams  
-- `/docs` → documentation, guides, reports  
+### 🐍 Programming
+- Python (Log parsing, detection engine, alerting)
 
----
+### 🔎 SIEM & Detection
+- Splunk (SPL queries)
+- Microsoft Sentinel (KQL analytics rules)
+- Elastic SIEM (EQL / Kibana)
+- Sigma Rules (SIEM-agnostic detection rules)
+- YARA (malware pattern detection)
 
-## 🛠 Tools Used
-
-- Python  
-- Splunk (SPL)  
-- Microsoft Sentinel (KQL)  
-- Elastic Security (EQL)  
-- Sigma Rules  
-- YARA  
-- VirusTotal API  
-- Slack Webhooks  
-- Docker (optional)  
+### 🛡 Security Workflows
+- MITRE ATT&CK Framework
+- Log analysis (Windows, Linux, Firewall)
+- Threat Intelligence (VirusTotal, AnyRun, etc.)
 
 ---
 
-## 👩‍💻 Author
+## 🎯 Project Goal
 
+To build a complete, end-to-end SOC Threat Detection platform showcasing:
+- Realistic alert scenarios  
+- Correlation rules  
+- Multi-SIEM queries  
+- Automated alert notifications  
+- SOC investigation workflows  
+- Detection engineering skills  
+
+This portfolio project reflects what a SOC Analyst does daily: monitor, detect, analyze, and respond to threats.
+
+---
+
+## 👤 Author
 **Supriya Rayala**  
-SOC Analyst | Cybersecurity Graduate Student
+SOC Analyst | Cybersecurity Graduate Student  
+
 	
