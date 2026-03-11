@@ -7,5 +7,22 @@
     "bruteforce_threshold": 10,
     "bruteforce_window": 60,
     "large_payload_bytes": 5000000
+  },
+  "alerting": {
+    "enabled": true,
+    "min_severity": "high",
+    "dedup_seconds": 300,
+    "slack": {
+      "enabled": false,
+      "webhook_url": ""
+    },
+    "email": {
+      "enabled": false,
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 587,
+      "sender_email": "srayala9090@gmail.com",
+      "sender_password": "",
+      "recipient_emails": ["rayalasupriya.5801@gmail.com"]
+    }
   }
 }

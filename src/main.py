@@ -10,6 +10,7 @@ Endpoints:
 """
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from src.alerts.notifier import AlertNotifier
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
@@ -28,6 +29,7 @@ app = FastAPI(
 # Global analyzer instance (loaded once at startup)
 _config = load_config()
 analyzer = ThreatAnalyzer(config=_config.get("analyzer", {}))
+notifier = AlertNotifier(config=_config.get("alerting", {}))
 
 
 # ─────────────────────────────────────────────
@@ -79,7 +81,9 @@ def analyze_entry(entry: LogEntryRequest):
         path=entry.path,
     )
     events = analyzer.analyze(log)
+    notifier.send_alerts(events)
     return [ThreatResponse(**e.to_dict()) for e in events]
+
 
 
 @app.post("/analyze/batch", response_model=List[ThreatResponse])
@@ -100,7 +104,9 @@ def analyze_batch(entries: List[LogEntryRequest]):
         for e in entries
     ]
     events = analyzer.analyze_batch(logs)
+    notifier.send_alerts(events)
     return [ThreatResponse(**e.to_dict()) for e in events]
+
 
 
 @app.post("/analyze/file", response_model=List[ThreatResponse])
@@ -124,7 +130,9 @@ async def analyze_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=422, detail="No parseable log entries found in file.")
 
     events = analyzer.analyze_batch(entries)
+    notifier.send_alerts(events)
     return [ThreatResponse(**e.to_dict()) for e in events]
+
 
 
 @app.get("/threats", response_model=List[ThreatResponse])
@@ -153,6 +161,7 @@ def threats_summary():
 
 @app.delete("/threats")
 def clear_threats():
-    """Clear the in-memory threat log (useful for testing)."""
-    analyzer.threat_log.clear()
-    return {"message": "Threat log cleared."}
+    global analyzer, notifier
+    analyzer = ThreatAnalyzer(config=_config.get("analyzer", {}))
+    notifier = AlertNotifier(config=_config.get("alerting", {}))
+    return {"message": "Threat log and detector state cleared."}
