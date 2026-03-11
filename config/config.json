@@ -1,0 +1,11 @@
+{
+  "analyzer": {
+    "ddos_threshold": 100,
+    "ddos_window": 60,
+    "portscan_threshold": 15,
+    "portscan_window": 30,
+    "bruteforce_threshold": 10,
+    "bruteforce_window": 60,
+    "large_payload_bytes": 5000000
+  }
+}
